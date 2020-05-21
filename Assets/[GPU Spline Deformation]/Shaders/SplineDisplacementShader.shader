@@ -31,7 +31,7 @@
         struct Input
         {
             float2 uv_MainTex;
-            float3 offset;
+            float influence;
         };
 
         half _Glossiness;
@@ -41,6 +41,7 @@
         float _ZStart;
         float _ZEnd;
         float _Amount;
+        float4x4 _TestMatrix;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -49,15 +50,32 @@
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
         
+        float4x4 GetMatrix(float x)
+        {
+            float offset = 0; 
+            float4 row0 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 0, 0, 0));
+            float4 row1 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 1.0 / 3.0, 0, 0));
+            float4 row2 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 2.0 / 3.0, 0, 0));
+            float4 row3 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 1, 0, 0));
+            return float4x4(row0, row1, row2, row3);
+        }
+        
         void vert (inout appdata_full v, out Input o) {
             UNITY_INITIALIZE_OUTPUT(Input,o);
         
             float coordinate = saturate((v.vertex.z - _ZStart) / (_ZEnd - _ZStart));
-            o.offset = float3(0, 0, 
+            //o.offset = float3(0, 0, 
             //coordinate
-            tex2Dlod(_DisplacementAlongSplineTex, float4(coordinate, .5, 0, 0)).r
-            );
-            v.vertex += float4(o.offset.xyz, 1) * _Amount;
+            //tex2Dlod(_DisplacementAlongSplineTex, float4(coordinate, .5, 0, 0)).a
+            //);
+            
+            //v.vertex += float4(o.offset.xyz, 1) * _Amount;
+            //v.vertex = mul(_TestMatrix, v.vertex);
+            
+            float4x4 m = GetMatrix(coordinate);
+            v.vertex = mul(m, v.vertex);
+            v.normal = normalize(mul(m, v.normal));
+            o.influence = coordinate;
         }
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -70,7 +88,7 @@
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
             
-            o.Albedo = IN.offset;
+            //o.Albedo = IN.influence;
             //o.Emission = o.Albedo;
         }
         ENDCG
