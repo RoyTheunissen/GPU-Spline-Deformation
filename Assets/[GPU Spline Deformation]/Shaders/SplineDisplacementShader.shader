@@ -64,14 +64,10 @@
             UNITY_INITIALIZE_OUTPUT(Input,o);
         
             float coordinate = saturate((v.vertex.z - _ZStart) / (_ZEnd - _ZStart));
-            //o.offset = float3(0, 0, 
-            //coordinate
-            //tex2Dlod(_DisplacementAlongSplineTex, float4(coordinate, .5, 0, 0)).a
-            //);
+            int i;
+            coordinate = modf(coordinate + _Time.x, i);
             
-            //v.vertex += float4(o.offset.xyz, 1) * _Amount;
-            //v.vertex = mul(_TestMatrix, v.vertex);
-            
+            v.vertex.z = 0;
             float4x4 m = GetMatrix(coordinate);
             v.vertex = mul(m, v.vertex);
             v.normal = normalize(mul(m, v.normal));
@@ -87,9 +83,6 @@
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
-            
-            //o.Albedo = IN.influence;
-            //o.Emission = o.Albedo;
         }
         ENDCG
     }
