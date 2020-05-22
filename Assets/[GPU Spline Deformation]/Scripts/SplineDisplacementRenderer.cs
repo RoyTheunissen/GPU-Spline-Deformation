@@ -10,14 +10,12 @@ namespace RoyTheunissen.GPUSplineDeformation
     {
         private static readonly int DisplacementTextureProperty = Shader.PropertyToID("_DisplacementAlongSplineTex");
 
-        [SerializeField] private Material material;
         [SerializeField] private BezierSpline spline;
+        [SerializeField] private Material material;
         
         [Space]
         [SerializeField] private int width = 32;
-        [SerializeField] private int height = 32;
-        [SerializeField] private TextureFormat textureFormat = TextureFormat.RGBA32;
-        [SerializeField] private bool linear = true;
+        [SerializeField] private int height = 8;
 
         [ContextMenu("Generate")]
         private void Generate()
@@ -25,7 +23,7 @@ namespace RoyTheunissen.GPUSplineDeformation
             if (material == null || spline == null)
                 return;
             
-            Texture2D texture2D = new Texture2D(width, height, textureFormat, false, linear)
+            Texture2D texture2D = new Texture2D(width, height, TextureFormat.RGBAFloat, false, true)
             {
                 wrapModeU = spline.Loop ? TextureWrapMode.Repeat : TextureWrapMode.Clamp,
                 wrapModeV = TextureWrapMode.Clamp,
