@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace RoyTheunissen.GPUSplineDeformation
@@ -8,6 +9,12 @@ namespace RoyTheunissen.GPUSplineDeformation
     [ExecuteInEditMode]
     public sealed class SplineDisplacementRenderer : MonoBehaviour
     {
+        public enum TextureMode
+        {
+            Dynamic = 0,
+            Asset = 1,
+        }
+        
         private static readonly int DisplacementTextureProperty = Shader.PropertyToID("_DisplacementAlongSplineTex");
 
         [SerializeField] private BezierSpline spline;
@@ -16,14 +23,24 @@ namespace RoyTheunissen.GPUSplineDeformation
         [Space]
         [SerializeField] private int width = 32;
         [SerializeField] private int height = 8;
+        
+        [Space]
+        [SerializeField, Tooltip("Whether to generate an asset or not.")] private TextureMode mode;
+        public TextureMode Mode => mode;
+        
+        [SerializeField, HideInInspector] private Texture2D textureAsset;
+        public Texture2D TextureAsset => textureAsset;
+
+        [NonSerialized] private Texture2D textureDynamic;
+        public Texture2D TextureDynamic => textureDynamic;
 
         [ContextMenu("Generate")]
-        private void Generate()
+        public Texture2D Render()
         {
-            if (material == null || spline == null)
-                return;
-            
-            Texture2D texture2D = new Texture2D(width, height, TextureFormat.RGBAFloat, false, true)
+            if (spline == null)
+                return null;
+
+            textureDynamic = new Texture2D(width, height, TextureFormat.RGBAFloat, false, true)
             {
                 wrapModeU = spline.Loop ? TextureWrapMode.Repeat : TextureWrapMode.Clamp,
                 wrapModeV = TextureWrapMode.Clamp,
@@ -58,16 +75,25 @@ namespace RoyTheunissen.GPUSplineDeformation
                 }
             }
 
-            texture2D.SetPixels(colors);
-            
-            texture2D.Apply();
+            textureDynamic.SetPixels(colors);
+            textureDynamic.Apply();
 
-            material.SetTexture(DisplacementTextureProperty, texture2D);
+            return textureDynamic;
         }
 
         private void Update()
-        { 
-            Generate();
+        {
+            if (mode == TextureMode.Asset)
+            {
+                if (material != null)
+                    material.SetTexture(DisplacementTextureProperty, textureAsset);
+            }
+            else
+            {
+                Render();
+                if (material != null)
+                    material.SetTexture(DisplacementTextureProperty, textureDynamic);
+            }
         }
 
         private void OnValidate()

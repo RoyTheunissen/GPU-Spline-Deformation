@@ -11,6 +11,7 @@
         _DisplacementAlongSplineTex ("Displacement Along Spline", 2D) = "black" {}
         _ZStart ("Z Start", Float) = -.5
         _ZEnd ("Z End", Float) = .5
+        _Speed ("Speed", Float) = 0
         _Amount ("Amount", Range(0, 1)) = 1
     }
     SubShader
@@ -40,6 +41,7 @@
         
         float _ZStart;
         float _ZEnd;
+        float _Speed;
         float _Amount;
         float4x4 _TestMatrix;
 
@@ -65,12 +67,11 @@
         
             float coordinate = saturate((v.vertex.z - _ZStart) / (_ZEnd - _ZStart));
             int i;
-            coordinate = modf(coordinate + _Time.x, i);
+            coordinate = modf(coordinate + _Time.y * _Speed, i);
             
-            v.vertex.z = 0;
             float4x4 m = GetMatrix(coordinate);
-            v.vertex = mul(m, v.vertex);
-            v.normal = normalize(mul(m, v.normal));
+            v.vertex = lerp(v.vertex, mul(m, float4(v.vertex.x, v.vertex.y, 0, v.vertex.w)), _Amount);
+            v.normal = lerp(v.normal, normalize(mul(m, float4(v.normal.xyz, 0)).xyz), _Amount);
             o.influence = coordinate;
         }
 
