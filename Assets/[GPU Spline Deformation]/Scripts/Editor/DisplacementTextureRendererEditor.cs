@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -8,8 +7,8 @@ namespace RoyTheunissen.GPUSplineDeformation
     /// <summary>
     /// Responsible for the editor interface, mostly for managing the texture asset workflow.
     /// </summary>
-    [CustomEditor(typeof(SplineDisplacementRenderer))]
-    public class SplineDisplacementRendererEditor : Editor
+    [CustomEditor(typeof(DisplacementTextureRenderer))]
+    public class DisplacementTextureRendererEditor : Editor
     {
         private SerializedProperty textureAsset;
 
@@ -24,9 +23,9 @@ namespace RoyTheunissen.GPUSplineDeformation
             
             serializedObject.Update();
 
-            SplineDisplacementRenderer splineDisplacementRenderer = target as SplineDisplacementRenderer;
+            DisplacementTextureRenderer displacementTextureRenderer = target as DisplacementTextureRenderer;
 
-            if (splineDisplacementRenderer.Mode == SplineDisplacementRenderer.TextureMode.Asset)
+            if (displacementTextureRenderer.Mode == DisplacementTextureRenderer.TextureMode.Asset)
             {
                 EditorGUILayout.PropertyField(textureAsset);
                 if (textureAsset.objectReferenceValue == null)
@@ -57,10 +56,10 @@ namespace RoyTheunissen.GPUSplineDeformation
             if (string.IsNullOrEmpty(projectPath))
                 return;
 
-            SplineDisplacementRenderer splineDisplacementRenderer = target as SplineDisplacementRenderer;
+            DisplacementTextureRenderer displacementTextureRenderer = target as DisplacementTextureRenderer;
             
             string absolutePath = Path.Combine(Directory.GetCurrentDirectory(), projectPath);
-            Texture2D texture2dOriginal = splineDisplacementRenderer.Render();
+            Texture2D texture2dOriginal = displacementTextureRenderer.Render();
             byte[] bytes = texture2dOriginal.EncodeToEXR();
             File.WriteAllBytes(absolutePath, bytes);
             AssetDatabase.Refresh();

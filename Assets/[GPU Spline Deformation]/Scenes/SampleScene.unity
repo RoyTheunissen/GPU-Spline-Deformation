@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 1932442722}
   - component: {fileID: 1932442718}
   m_Layer: 0
-  m_Name: Deformable
+  m_Name: Displaceable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fcb407c2e07574687f978446669439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spline: {fileID: 1932442718}
+  displacementProvider: {fileID: 1932442718}
   material: {fileID: 2100000, guid: 9133a8a1880400b4ab57734f70f9253e, type: 2}
   width: 1024
   height: 8

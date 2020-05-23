@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
+using RoyTheunissen.GPUSplineDeformation;
 
-public class BezierSpline : MonoBehaviour {
+public class BezierSpline : MonoBehaviour, IDisplacementProvider {
 
 	[SerializeField]
 	private Vector3[] points;
@@ -195,5 +196,28 @@ public class BezierSpline : MonoBehaviour {
 			BezierControlPointMode.Free,
 			BezierControlPointMode.Free
 		};
+	}
+
+	// Displacement provider stuff...
+	bool IDisplacementProvider.IsLooping => Loop;
+
+	Vector3 IDisplacementProvider.GetPositionAt(float fraction)
+	{
+		return GetPoint(fraction);
+	}
+
+	Quaternion IDisplacementProvider.GetRotationAt(float fraction)
+	{
+		Vector3 directionInterpolated = GetDirection(fraction);
+		
+		// NOTE: This cross product stuff is kind of hacky but otherwise LookRotation returns a bogus value when the
+		// spline goes straight up or down and the mesh will collapse on itself. A more robust spline implementation
+		// might not have this problem but this only serves as an example anyway.
+		return Quaternion.LookRotation(directionInterpolated, Vector3.Cross(directionInterpolated, transform.right));
+	}
+
+	Vector3 IDisplacementProvider.GetScaleAt(float fraction)
+	{
+		return Vector3.one;
 	}
 }

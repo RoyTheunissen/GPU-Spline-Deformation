@@ -1,4 +1,4 @@
-﻿Shader "Custom/SplineDisplacementShader"
+﻿Shader "Custom/Displacement Lookup Shader"
 {
     Properties
     {

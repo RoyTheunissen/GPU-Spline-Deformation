@@ -7,7 +7,7 @@ namespace RoyTheunissen.GPUSplineDeformation
     /// Renders spline displacement to a texture.
     /// </summary>
     [ExecuteInEditMode]
-    public sealed class SplineDisplacementRenderer : MonoBehaviour
+    public sealed class DisplacementTextureRenderer : MonoBehaviour
     {
         public enum TextureMode
         {
@@ -17,7 +17,10 @@ namespace RoyTheunissen.GPUSplineDeformation
         
         private static readonly int DisplacementTextureProperty = Shader.PropertyToID("_DisplacementAlongSplineTex");
 
-        [SerializeField] private BezierSpline spline;
+        [Tooltip("Where the displacement is read from, for instance: a spline. Any linear sequence of matrices will do.")]
+        [SerializeField] private MonoBehaviour displacementProvider;
+        
+        [Tooltip("If specified, material whose texture is updated so you can see your result conveniently.")]
         [SerializeField] private Material material;
         
         [Space]
@@ -29,20 +32,22 @@ namespace RoyTheunissen.GPUSplineDeformation
         public TextureMode Mode => mode;
         
         [SerializeField, HideInInspector] private Texture2D textureAsset;
-        public Texture2D TextureAsset => textureAsset;
 
         [NonSerialized] private Texture2D textureDynamic;
-        public Texture2D TextureDynamic => textureDynamic;
 
         [ContextMenu("Generate")]
         public Texture2D Render()
         {
-            if (spline == null)
+            if (displacementProvider == null)
                 return null;
 
+            IDisplacementProvider spline = displacementProvider as IDisplacementProvider;
+            if (spline == null)
+                return null;
+            
             textureDynamic = new Texture2D(width, height, TextureFormat.RGBAFloat, false, true)
             {
-                wrapModeU = spline.Loop ? TextureWrapMode.Repeat : TextureWrapMode.Clamp,
+                wrapModeU = spline.IsLooping ? TextureWrapMode.Repeat : TextureWrapMode.Clamp,
                 wrapModeV = TextureWrapMode.Clamp,
             };
 
@@ -52,11 +57,9 @@ namespace RoyTheunissen.GPUSplineDeformation
             {
                 float xNormalized = (float)x / (width - 1);
 
-                Vector3 positionInterpolated = spline.GetPoint(xNormalized);
-                Vector3 directionInterpolated = spline.GetDirection(xNormalized);
-                Quaternion rotationInterpolated = Quaternion.LookRotation(
-                    directionInterpolated, Vector3.Cross(directionInterpolated, Vector3.right));
-                Vector3 scaleInterpolated = Vector3.one;
+                Vector3 positionInterpolated = spline.GetPositionAt(xNormalized);
+                Quaternion rotationInterpolated = spline.GetRotationAt(xNormalized);
+                Vector3 scaleInterpolated = spline.GetScaleAt(xNormalized);
                 Matrix4x4 matrix = transform.worldToLocalMatrix * Matrix4x4.TRS(
                                        positionInterpolated, rotationInterpolated, scaleInterpolated);
 
