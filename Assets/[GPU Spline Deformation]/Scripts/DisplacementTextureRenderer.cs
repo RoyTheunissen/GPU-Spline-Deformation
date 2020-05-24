@@ -45,6 +45,10 @@ namespace RoyTheunissen.GPUSplineDeformation
             if (spline == null)
                 return null;
             
+            if (textureDynamic != null)
+                DestroyImmediate(textureDynamic);
+            
+            // TODO: This is leaking, would be more efficient to only create a new texture if needed.
             textureDynamic = new Texture2D(width, height, TextureFormat.RGBAFloat, false, true)
             {
                 wrapModeU = spline.IsLooping ? TextureWrapMode.Repeat : TextureWrapMode.Clamp,
