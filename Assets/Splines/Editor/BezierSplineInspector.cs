@@ -76,7 +76,7 @@ public class BezierSplineInspector : Editor {
 			Handles.DrawBezier(p0, p3, p1, p2, Color.white, null, 2f);
 			p0 = p3;
 		}
-		ShowDirections();
+		//ShowDirections();
 	}
 
 	private void ShowDirections () {
