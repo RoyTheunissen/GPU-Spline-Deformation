@@ -66,8 +66,7 @@
             UNITY_INITIALIZE_OUTPUT(Input,o);
         
             float coordinate = saturate((v.vertex.z - _ZStart) / (_ZEnd - _ZStart));
-            int i;
-            coordinate = modf(coordinate + _Time.y * _Speed, i);
+            coordinate = coordinate + _Time.y * _Speed;
             
             float4x4 m = GetMatrix(coordinate);
             v.vertex = lerp(v.vertex, mul(m, float4(v.vertex.x, v.vertex.y, 0, v.vertex.w)), _Amount);
