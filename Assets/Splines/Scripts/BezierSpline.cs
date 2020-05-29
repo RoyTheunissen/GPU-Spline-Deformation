@@ -2,7 +2,7 @@
 using System;
 using RoyTheunissen.GPUSplineDeformation;
 
-public class BezierSpline : MonoBehaviour, IDisplacementProvider {
+public class BezierSpline : MonoBehaviour, IDeformationProvider {
 
 	[SerializeField]
 	private Vector3[] points;
@@ -198,15 +198,15 @@ public class BezierSpline : MonoBehaviour, IDisplacementProvider {
 		};
 	}
 
-	// Displacement provider stuff...
-	bool IDisplacementProvider.IsLooping => Loop;
+	// Deformation provider stuff...
+	bool IDeformationProvider.IsLooping => Loop;
 
-	Vector3 IDisplacementProvider.GetPositionAt(float fraction)
+	Vector3 IDeformationProvider.GetPositionAt(float fraction)
 	{
 		return GetPoint(fraction);
 	}
 
-	Quaternion IDisplacementProvider.GetRotationAt(float fraction)
+	Quaternion IDeformationProvider.GetRotationAt(float fraction)
 	{
 		Vector3 directionInterpolated = GetDirection(fraction);
 		
@@ -216,7 +216,7 @@ public class BezierSpline : MonoBehaviour, IDisplacementProvider {
 		return Quaternion.LookRotation(directionInterpolated, Vector3.Cross(directionInterpolated, transform.right));
 	}
 
-	Vector3 IDisplacementProvider.GetScaleAt(float fraction)
+	Vector3 IDeformationProvider.GetScaleAt(float fraction)
 	{
 		return Vector3.one;
 	}

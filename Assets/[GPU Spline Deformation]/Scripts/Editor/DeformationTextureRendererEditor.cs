@@ -7,8 +7,8 @@ namespace RoyTheunissen.GPUSplineDeformation
     /// <summary>
     /// Responsible for the editor interface, mostly for managing the texture asset workflow.
     /// </summary>
-    [CustomEditor(typeof(DisplacementTextureRenderer))]
-    public class DisplacementTextureRendererEditor : Editor
+    [CustomEditor(typeof(DeformationTextureRenderer))]
+    public class DeformationTextureRendererEditor : Editor
     {
         private SerializedProperty textureAsset;
 
@@ -23,9 +23,9 @@ namespace RoyTheunissen.GPUSplineDeformation
             
             serializedObject.Update();
 
-            DisplacementTextureRenderer displacementTextureRenderer = target as DisplacementTextureRenderer;
+            DeformationTextureRenderer deformationTextureRenderer = target as DeformationTextureRenderer;
 
-            if (displacementTextureRenderer.Mode == DisplacementTextureRenderer.TextureMode.Asset)
+            if (deformationTextureRenderer.Mode == DeformationTextureRenderer.TextureMode.Asset)
             {
                 EditorGUILayout.PropertyField(textureAsset);
                 if (textureAsset.objectReferenceValue == null)
@@ -33,8 +33,8 @@ namespace RoyTheunissen.GPUSplineDeformation
                     if (GUILayout.Button("Save As.."))
                     {
                         string projectPath = EditorUtility.SaveFilePanelInProject(
-                            "Save spline displacement texture", "Spline Displacement Texture", "exr",
-                            "Save the spline displacement to an asset so it doesn't have to be recomputed at run-time.");
+                            "Save spline deformation texture", "Spline Deformation Texture", "exr",
+                            "Save the spline deformation to an asset so it doesn't have to be recomputed at run-time.");
                         RenderToFile(projectPath);
                     }
                 }
@@ -56,10 +56,10 @@ namespace RoyTheunissen.GPUSplineDeformation
             if (string.IsNullOrEmpty(projectPath))
                 return;
 
-            DisplacementTextureRenderer displacementTextureRenderer = target as DisplacementTextureRenderer;
+            DeformationTextureRenderer deformationTextureRenderer = target as DeformationTextureRenderer;
             
             string absolutePath = Path.Combine(Directory.GetCurrentDirectory(), projectPath);
-            Texture2D texture2dOriginal = displacementTextureRenderer.Render();
+            Texture2D texture2dOriginal = deformationTextureRenderer.Render();
             byte[] bytes = texture2dOriginal.EncodeToEXR();
             File.WriteAllBytes(absolutePath, bytes);
             AssetDatabase.Refresh();

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Spline Displacement Wire
+  m_Name: Spline No Deformation
   m_Shader: {fileID: 4800000, guid: 736518a8533564242aa235c7cb3264bc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -23,6 +23,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DeformationAlongSplineTex:
+        m_Texture: {fileID: 2800000, guid: 60b8deb15368c574ca9355c9303fb6a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -36,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DisplacementAlongSplineTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f703f26a343bab7418d3ee58c6ff9efc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -60,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Amount: 1
+    - _Amount: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 665620223}
   - component: {fileID: 665620222}
   m_Layer: 0
-  m_Name: Displaceable (Along Spline)
+  m_Name: Deformable (Along Spline)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fcb407c2e07574687f978446669439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displacementProvider: {fileID: 665620222}
+  deformationProvider: {fileID: 665620222}
   material: {fileID: 2100000, guid: c14efcf121ee911438f20ea373b9b517, type: 2}
   width: 1024
   height: 8
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 1085200440}
   - component: {fileID: 1085200439}
   m_Layer: 0
-  m_Name: Displaceable (Mesh)
+  m_Name: Deformable (Mesh)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1728401600}
   - component: {fileID: 1728401599}
   m_Layer: 0
-  m_Name: Displaceable (Other Mesh)
+  m_Name: Deformable (Other Mesh)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   points:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 2.2467093}
-  - {x: 0, y: 2.7877965, z: 2.5628633}
+  - {x: 0, y: 2.3132937, z: 2.3161917}
   - {x: 0, y: 2.3409872, z: 4.1973534}
   modes: 0000000000000000
   loop: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fcb407c2e07574687f978446669439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displacementProvider: {fileID: 1728401599}
+  deformationProvider: {fileID: 1728401599}
   material: {fileID: 2100000, guid: be83fd303a9acb34ea031b05e41ca38a, type: 2}
   width: 1024
   height: 8
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 1932442722}
   - component: {fileID: 1932442718}
   m_Layer: 0
-  m_Name: Displaceable (Looping)
+  m_Name: Deformable (Looping)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fcb407c2e07574687f978446669439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displacementProvider: {fileID: 1932442718}
+  deformationProvider: {fileID: 1932442718}
   material: {fileID: 2100000, guid: 9133a8a1880400b4ab57734f70f9253e, type: 2}
   width: 1024
   height: 8
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 2099835498}
   - component: {fileID: 2099835497}
   m_Layer: 0
-  m_Name: Displaceable (Spline)
+  m_Name: Deformable (Spline)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

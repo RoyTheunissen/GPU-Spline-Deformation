@@ -1,4 +1,4 @@
-﻿Shader "Custom/Displacement Lookup Shader"
+﻿Shader "Custom/Deformation Lookup Shader"
 {
     Properties
     {
@@ -8,7 +8,7 @@
         _Metallic ("Metallic", Range(0,1)) = 0.0
         
         [Space]
-        _DisplacementAlongSplineTex ("Displacement Along Spline", 2D) = "black" {}
+        _DeformationAlongSplineTex ("Deformation Along Spline", 2D) = "black" {}
         _ZStart ("Z Start", Float) = 0
         _ZEnd ("Z End", Float) = 1
         _Speed ("Speed", Float) = 0
@@ -27,7 +27,7 @@
         #pragma target 3.0
 
         sampler2D _MainTex;
-        sampler2D _DisplacementAlongSplineTex;
+        sampler2D _DeformationAlongSplineTex;
 
         struct Input
         {
@@ -55,10 +55,10 @@
         float4x4 GetMatrix(float x)
         {
             float offset = 0; 
-            float4 row0 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 0, 0, 0));
-            float4 row1 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 1.0 / 3.0, 0, 0));
-            float4 row2 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 2.0 / 3.0, 0, 0));
-            float4 row3 = tex2Dlod(_DisplacementAlongSplineTex, float4(x, 1, 0, 0));
+            float4 row0 = tex2Dlod(_DeformationAlongSplineTex, float4(x, 0, 0, 0));
+            float4 row1 = tex2Dlod(_DeformationAlongSplineTex, float4(x, 1.0 / 3.0, 0, 0));
+            float4 row2 = tex2Dlod(_DeformationAlongSplineTex, float4(x, 2.0 / 3.0, 0, 0));
+            float4 row3 = tex2Dlod(_DeformationAlongSplineTex, float4(x, 1, 0, 0));
             return float4x4(row0, row1, row2, row3);
         }
         

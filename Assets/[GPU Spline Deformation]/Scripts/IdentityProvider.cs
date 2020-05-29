@@ -3,9 +3,9 @@ using UnityEngine;
 namespace RoyTheunissen.GPUSplineDeformation
 {
     /// <summary>
-    /// Provides displacement for the identity matrix (no displacement).
+    /// Provides deformation for the identity matrix (no deformation).
     /// </summary>
-    public sealed class IdentityProvider : MonoBehaviour, IDisplacementProvider
+    public sealed class IdentityProvider : MonoBehaviour, IDeformationProvider
     {
         public bool IsLooping => false;
         

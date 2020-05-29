@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RoyTheunissen.GPUSplineDeformation
 {
-    public interface IDisplacementProvider
+    public interface IDeformationProvider
     {
         bool IsLooping { get; }
 

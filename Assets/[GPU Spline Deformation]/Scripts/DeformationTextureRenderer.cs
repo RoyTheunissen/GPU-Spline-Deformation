@@ -4,10 +4,10 @@ using UnityEngine;
 namespace RoyTheunissen.GPUSplineDeformation
 {
     /// <summary>
-    /// Renders spline displacement to a texture.
+    /// Renders spline deformation to a texture.
     /// </summary>
     [ExecuteInEditMode]
-    public sealed class DisplacementTextureRenderer : MonoBehaviour
+    public sealed class DeformationTextureRenderer : MonoBehaviour
     {
         public enum TextureMode
         {
@@ -15,10 +15,10 @@ namespace RoyTheunissen.GPUSplineDeformation
             Asset = 1,
         }
         
-        private static readonly int DisplacementTextureProperty = Shader.PropertyToID("_DisplacementAlongSplineTex");
+        private static readonly int DeformationTextureProperty = Shader.PropertyToID("_DeformationAlongSplineTex");
 
-        [Tooltip("Where the displacement is read from, for instance: a spline. Any linear sequence of matrices will do.")]
-        [SerializeField] private MonoBehaviour displacementProvider;
+        [Tooltip("Where the deformation is read from, for instance: a spline. Any linear sequence of matrices will do.")]
+        [SerializeField] private MonoBehaviour deformationProvider;
         
         [Tooltip("If specified, material whose texture is updated so you can see your result conveniently.")]
         [SerializeField] private Material material;
@@ -38,10 +38,10 @@ namespace RoyTheunissen.GPUSplineDeformation
         [ContextMenu("Generate")]
         public Texture2D Render()
         {
-            if (displacementProvider == null)
+            if (deformationProvider == null)
                 return null;
 
-            IDisplacementProvider spline = displacementProvider as IDisplacementProvider;
+            IDeformationProvider spline = deformationProvider as IDeformationProvider;
             if (spline == null)
                 return null;
             
@@ -93,13 +93,13 @@ namespace RoyTheunissen.GPUSplineDeformation
             if (mode == TextureMode.Asset)
             {
                 if (material != null)
-                    material.SetTexture(DisplacementTextureProperty, textureAsset);
+                    material.SetTexture(DeformationTextureProperty, textureAsset);
             }
             else
             {
                 Render();
                 if (material != null)
-                    material.SetTexture(DisplacementTextureProperty, textureDynamic);
+                    material.SetTexture(DeformationTextureProperty, textureDynamic);
             }
         }
 
