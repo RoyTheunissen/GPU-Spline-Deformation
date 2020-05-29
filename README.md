@@ -1,5 +1,6 @@
 
 [![Roy Theunissen](Readme/GithubHeader.jpg)](http://roytheunissen.com)
+![GitHub Follow](https://img.shields.io/github/followers/RoyTheunissen?label=RoyTheunissen&style=social) ![Twitter](https://img.shields.io/twitter/follow/MisterRoyzo?style=social)
 
 _Sample for baking deformation to a texture then applying it to a mesh via a shader._
 
