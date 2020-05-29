@@ -9,8 +9,8 @@
         
         [Space]
         _DisplacementAlongSplineTex ("Displacement Along Spline", 2D) = "black" {}
-        _ZStart ("Z Start", Float) = -.5
-        _ZEnd ("Z End", Float) = .5
+        _ZStart ("Z Start", Float) = 0
+        _ZEnd ("Z End", Float) = 1
         _Speed ("Speed", Float) = 0
         _Amount ("Amount", Range(0, 1)) = 1
     }
