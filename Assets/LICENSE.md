@@ -21,6 +21,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-This does NOT apply to the Splines and the spline implementation from Catlike Coding contained within.
+This license does NOT apply to the "Splines" folder and the spline implementation from Catlike Coding contained within.
 
 For the license of that software please visit https://catlikecoding.com/unity/tutorials/curves-and-splines/
