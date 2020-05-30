@@ -16,6 +16,7 @@ I saw [Simon Trümpler's Tileable Liquid Mesh on Spline](https://www.artstation.
 
 ## Getting Started
 
+- Add the package to your Unity project (tips on how to install it are in the Installation section)
 - Create the mesh you will be deforming that's pointing in the forward Z axis. Samples are provided.
   - Make sure it has a material with the `Deformation Lookup Shader` shader.
   - If the mesh does not start at (0, 0, 0) and stop at (0, 0, 1), adjust the `Z Start` and `Z End` properties accordingly.
@@ -40,7 +41,7 @@ I saw [Simon Trümpler's Tileable Liquid Mesh on Spline](https://www.artstation.
 The package is available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
 ```
-openupm add com.brunomikoski.spriteauditor
+openupm add com.roytheunissen.gpusplinedeformation
 ```
 
 ### Manifest
