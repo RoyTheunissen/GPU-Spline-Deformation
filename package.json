@@ -1,9 +1,9 @@
 {
   "name": "com.roytheunissen.gpusplinedeformation",
-  "displayName": "GPUSplineDeformation",
+  "displayName": "GPU Spline Deformation",
   "version": "0.0.1",
   "unity": "2018.4",
-  "description": "Sample for baking deformation to a texture then applying it to a mesh via a shader.",
+  "description": "Baking deformation to a texture then applying it to a mesh via a shader.",
   "keywords": [
     "sprite",
     "optimization",
