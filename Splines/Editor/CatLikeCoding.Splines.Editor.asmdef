@@ -1,0 +1,17 @@
+{
+    "name": "CatLikeCoding.Splines.Editor",
+    "references": [
+        "GUID:5c22f0f47dc6c254a97ab6b46887e048"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

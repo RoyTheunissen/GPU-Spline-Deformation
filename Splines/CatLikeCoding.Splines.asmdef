@@ -1,0 +1,15 @@
+{
+    "name": "CatLikeCoding.Splines",
+    "references": [
+        "GUID:c2a22a555db1efa4cbd9c94bf8e6875b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
