@@ -1,5 +1,7 @@
 
 [![Roy Theunissen](Readme/GithubHeader.jpg)](http://roytheunissen.com)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)]
 ![GitHub Follow](https://img.shields.io/github/followers/RoyTheunissen?label=RoyTheunissen&style=social) ![Twitter](https://img.shields.io/twitter/follow/MisterRoyzo?style=social)
 
 _Sample for baking deformation to a texture then applying it to a mesh via a shader._
@@ -10,7 +12,7 @@ I saw [Simon Trümpler's Tileable Liquid Mesh on Spline](https://www.artstation.
 
 [Video](https://youtu.be/bfY7kJfgMuc)
 
-![Example](Readme/Example.gif)
+![Example](Documentation~/Example.gif)
 
 ## Getting Started
 
@@ -32,12 +34,31 @@ I saw [Simon Trümpler's Tileable Liquid Mesh on Spline](https://www.artstation.
   - Make sure `Z Start` and `Z End` are set correctly in the material
   - Make sure the texture's wrap mode is set to clamp. For looping meshes you may want the X-axis to be set to Repeat
 
+## Installation
+
+### OpenUPM
+The package is available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+
+```
+openupm add com.brunomikoski.spriteauditor
+```
+
+### Manifest
+You can also install via git URL by adding this entry in your **manifest.json**
+```
+"com.roytheunissen.gpusplinedeformation": "https://github.com/RoyTheunissen/GPU-Spline-Deformation.git"
+```
+
+### Unity Package Manager
+```
+from Window->Package Manager, click on the + sign and Add from git: https://github.com/RoyTheunissen/GPU-Spline-Deformation.git
+```
+
+
 ## Contact
 [Roy Theunissen](https://roytheunissen.com)
 
 [roy.theunissen@live.nl](mailto:roy.theunissen@live.nl)
-
-[@MisterRoyzo](https://twitter.com/MisterRoyzo)
 
 
 ## Acknowledgements

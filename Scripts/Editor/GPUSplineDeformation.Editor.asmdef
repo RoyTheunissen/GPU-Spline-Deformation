@@ -1,0 +1,17 @@
+{
+    "name": "GPUSplineDeformation.Editor",
+    "references": [
+        "GUID:c2a22a555db1efa4cbd9c94bf8e6875b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

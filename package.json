@@ -1,0 +1,19 @@
+{
+  "name": "com.roytheunissen.gpusplinedeformation",
+  "displayName": "GPUSplineDeformation",
+  "version": "0.0.1",
+  "unity": "2018.4",
+  "description": "Sample for baking deformation to a texture then applying it to a mesh via a shader.",
+  "keywords": [
+    "sprite",
+    "optimization",
+    "bundlezie"
+  ],
+  "category": "editor extensions",
+  "homepage": "https://github.com/RoyTheunissen/GPU-Spline-Deformation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RoyTheunissen/GPU-Spline-Deformation.git"
+  },
+  "bugs": "https://github.com/RoyTheunissen/GPU-Spline-Deformation/issues"
+}
