@@ -1,7 +1,6 @@
 
 [![Roy Theunissen](Documentation~/GithubHeader.jpg)](http://roytheunissen.com)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)]
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE.md)
 ![GitHub Follow](https://img.shields.io/github/followers/RoyTheunissen?label=RoyTheunissen&style=social) ![Twitter](https://img.shields.io/twitter/follow/MisterRoyzo?style=social)
 
 _Sample for baking deformation to a texture then applying it to a mesh via a shader._
