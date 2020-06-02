@@ -9,7 +9,7 @@ _Sample for baking deformation to a texture then applying it to a mesh via a sha
 
 I saw [Simon Trümpler's Tileable Liquid Mesh on Spline](https://www.artstation.com/artwork/BmN5G6) and I was wondering how the mesh was following the spline exactly. It gave me the idea of baking the deformation to a texture somehow, which actually turned out to be really simple.
 
-[Video](https://youtu.be/bfY7kJfgMuc)
+[Video](https://youtu.be/bfY7kJfgMuc)    |    [Article](https://medium.com/@roy.theunissen/gpu-spline-deformation-in-unity-a710f55f210c)
 
 ![Example](Documentation~/Example.gif)
 
