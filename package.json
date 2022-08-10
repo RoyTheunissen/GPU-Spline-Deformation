@@ -1,7 +1,7 @@
 {
   "name": "com.roytheunissen.gpusplinedeformation",
   "displayName": "GPU Spline Deformation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "unity": "2018.4",
   "description": "Baking deformation to a texture then applying it to a mesh via a shader.",
   "keywords": [
@@ -9,6 +9,10 @@
     "optimization",
     "bundlezie"
   ],
+  "author": {
+    "name": "Roy Theunissen",
+    "url": "https://www.roytheunissen.com"
+  },
   "category": "editor extensions",
   "homepage": "https://github.com/RoyTheunissen/GPU-Spline-Deformation",
   "repository": {
