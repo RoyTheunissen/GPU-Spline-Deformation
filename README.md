@@ -1,7 +1,26 @@
-
 [![Roy Theunissen](Documentation~/GithubHeader.jpg)](http://roytheunissen.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE.md)
-![GitHub Follow](https://img.shields.io/github/followers/RoyTheunissen?label=RoyTheunissen&style=social) ![Twitter](https://img.shields.io/twitter/follow/Roy_Theunissen?style=social)
+![GitHub Follow](https://img.shields.io/github/followers/RoyTheunissen?label=RoyTheunissen&style=social)
+<a href="https://roytheunissen.com" target="blank"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/globe_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/globe_light.png">
+    <img alt="globe" src="globe_dark.png" width="20" height="20" />
+</picture></a>
+<a href="https://bsky.app/profile/roytheunissen.com" target="blank"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/bluesky_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/bluesky_light.png">
+    <img alt="bluesky" src="bluesky_dark.png" width="20" height="20" />
+</picture></a>
+<a href="https://www.youtube.com/c/r_m_theunissen" target="blank"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/youtube_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/youtube_light.png">
+    <img alt="youtube" src="youtube_dark.png" width="20" height="20" />
+</picture></a> 
+<a href="https://www.tiktok.com/@roy_theunissen" target="blank"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/tiktok_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/RoyTheunissen/RoyTheunissen/raw/master/tiktok_light.png">
+    <img alt="tiktok" src="tiktok_dark.png" width="20" height="20" />
+</picture></a>
 
 _Sample for baking deformation to a texture then applying it to a mesh via a shader._
 
